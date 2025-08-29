@@ -1,0 +1,212 @@
+[gd_scene load_steps=9 format=3 uid="uid://dcpnybp8xluee"]
+
+[ext_resource type="Script" uid="uid://dpss8ru7q3wby" path="res://delta/delta.gd" id="1_gh32t"]
+[ext_resource type="Script" uid="uid://eau1k4wdmb34" path="res://delta/uses_delta.gd" id="2_6vcrk"]
+[ext_resource type="Texture2D" uid="uid://bepgsw1owmwnw" path="res://icon.svg" id="2_f37s7"]
+[ext_resource type="Script" uid="uid://bjnfwb26dsen8" path="res://delta/path_follow_2d.gd" id="3_gmxsu"]
+[ext_resource type="Script" uid="uid://cgu8s0lnks8dq" path="res://delta/does_not_use_delta.gd" id="4_pki7j"]
+
+[sub_resource type="Curve2D" id="Curve2D_f37s7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 206, 304, 0, 0, 0, 0, 600, 304, 0, 0, 0, 0, 206, 304)
+}
+point_count = 3
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_pki7j"]
+number_color = Color(0.798613, 0.297874, 0.0159704, 1)
+symbol_color = Color(0.666569, 0.666569, 0.666569, 1)
+function_color = Color(0.350471, 0.548974, 0.992788, 1)
+member_variable_color = Color(0, 0.588235, 0, 1)
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_gmxsu"]
+number_color = Color(0.798613, 0.297874, 0.0159704, 1)
+symbol_color = Color(0.666569, 0.666569, 0.666569, 1)
+function_color = Color(0.350471, 0.548974, 0.992788, 1)
+member_variable_color = Color(0, 0.588235, 0, 1)
+
+[node name="Delta" type="Node2D"]
+script = ExtResource("1_gh32t")
+max_configurable_fps = 300
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -261.0
+offset_right = 250.0
+offset_bottom = -165.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="MaxFPS" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/MaxFPS"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FPS Máximos"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/MaxFPS"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MaxFPSLabel" type="Label" parent="CanvasLayer/VBoxContainer/MaxFPS/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "60"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/MaxFPS/VBoxContainer"]
+layout_mode = 2
+
+[node name="MinConfigurableFPS" type="Label" parent="CanvasLayer/VBoxContainer/MaxFPS/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+vertical_alignment = 1
+
+[node name="ConfigurableMaxFPS" type="HSlider" parent="CanvasLayer/VBoxContainer/MaxFPS/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 300.0
+value = 1.0
+
+[node name="MaxConfigurableFPS" type="Label" parent="CanvasLayer/VBoxContainer/MaxFPS/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "500"
+vertical_alignment = 1
+
+[node name="RealFPS" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/RealFPS"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FPS reales"
+
+[node name="LabelRealFPS" type="Label" parent="CanvasLayer/VBoxContainer/RealFPS"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "60"
+horizontal_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="UsesDelta" type="Node2D" parent="Node2D"]
+position = Vector2(-100, 86)
+script = ExtResource("2_6vcrk")
+
+[node name="Path2D" type="Path2D" parent="Node2D/UsesDelta"]
+curve = SubResource("Curve2D_f37s7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/UsesDelta/Path2D"]
+position = Vector2(206, 304)
+rotates = false
+cubic_interp = false
+loop = false
+script = ExtResource("3_gmxsu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/UsesDelta/Path2D/PathFollow2D"]
+position = Vector2(-0.0256805, -3.99994)
+rotation = -0.0064184
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_f37s7")
+
+[node name="CodeEdit" type="CodeEdit" parent="Node2D/UsesDelta"]
+offset_left = 645.0
+offset_top = 260.0
+offset_right = 1019.0
+offset_bottom = 349.0
+theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
+text = "func _process(delta: float) -> void:
+	path_follow_2d.progress_ratio += 0.5 * delta
+"
+editable = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+syntax_highlighter = SubResource("CodeHighlighter_pki7j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/UsesDelta"]
+offset_left = 1037.0
+offset_top = 276.0
+offset_right = 1225.0
+offset_bottom = 326.0
+
+[node name="Label" type="Label" parent="Node2D/UsesDelta/VBoxContainer"]
+layout_mode = 2
+text = "Tiempo de última vuelta"
+
+[node name="UsingDeltaLastLapTime" type="Label" parent="Node2D/UsesDelta/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10s"
+horizontal_alignment = 1
+
+[node name="DoesNotUseDelta" type="Node2D" parent="Node2D"]
+position = Vector2(-100, 0)
+script = ExtResource("4_pki7j")
+
+[node name="Path2D" type="Path2D" parent="Node2D/DoesNotUseDelta"]
+position = Vector2(0, 208)
+curve = SubResource("Curve2D_f37s7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/DoesNotUseDelta/Path2D"]
+position = Vector2(206, 304)
+rotates = false
+cubic_interp = false
+loop = false
+script = ExtResource("3_gmxsu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/DoesNotUseDelta/Path2D/PathFollow2D"]
+rotation = -0.0064184
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_f37s7")
+
+[node name="CodeEdit" type="CodeEdit" parent="Node2D/DoesNotUseDelta"]
+offset_left = 645.0
+offset_top = 472.0
+offset_right = 1019.0
+offset_bottom = 561.0
+theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
+text = "func _process(delta: float) -> void:
+	path_follow_2d.progress_ratio += 0.008"
+editable = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+syntax_highlighter = SubResource("CodeHighlighter_gmxsu")
+delimiter_strings = Array[String](["\" \"", "' '"])
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/DoesNotUseDelta"]
+offset_left = 1037.0
+offset_top = 490.0
+offset_right = 1225.0
+offset_bottom = 540.0
+
+[node name="Label" type="Label" parent="Node2D/DoesNotUseDelta/VBoxContainer"]
+layout_mode = 2
+text = "Tiempo de última vuelta"
+
+[node name="WithoutDeltaLastLapTime" type="Label" parent="Node2D/DoesNotUseDelta/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10s"
+horizontal_alignment = 1
