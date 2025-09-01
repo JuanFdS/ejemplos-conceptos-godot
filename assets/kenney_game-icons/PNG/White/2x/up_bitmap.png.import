@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://cwphglkgpnef7"
+path="res://.godot/imported/up_bitmap.png-ac9403dbde47693948eacde527ac517f.res"
+
+[deps]
+
+source_file="res://assets/kenney_game-icons/PNG/White/2x/up_bitmap.png"
+dest_files=["res://.godot/imported/up_bitmap.png-ac9403dbde47693948eacde527ac517f.res"]
+
+[params]
+
+create_from=1
+threshold=0.5

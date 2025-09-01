@@ -1,0 +1,313 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhfs3jpkagxai"]
+
+[ext_resource type="Theme" uid="uid://c6j8o05mtk0rb" path="res://resources/ui_theme.tres" id="1_a25pr"]
+[ext_resource type="Script" uid="uid://dxuftutbb4t3c" path="res://examples/collision_layers_and_masks/components/collision_layers_editor.gd" id="2_mox4a"]
+
+[node name="CollisionLayersEditor" type="PanelContainer"]
+offset_left = 8.0
+offset_top = 21.0
+offset_right = 185.0
+offset_bottom = 114.0
+size_flags_vertical = 0
+theme = ExtResource("1_a25pr")
+script = ExtResource("2_mox4a")
+collision_flags = null
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CollisionLayers" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 3
+
+[node name="1to8" type="GridContainer" parent="VBoxContainer/CollisionLayers"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 4
+
+[node name="1" type="Button" parent="VBoxContainer/CollisionLayers/1to8"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "1"
+
+[node name="2" type="Button" parent="VBoxContainer/CollisionLayers/1to8"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "2"
+
+[node name="3" type="Button" parent="VBoxContainer/CollisionLayers/1to8"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "3"
+
+[node name="4" type="Button" parent="VBoxContainer/CollisionLayers/1to8"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "4"
+
+[node name="5" type="Button" parent="VBoxContainer/CollisionLayers/1to8"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "5"
+
+[node name="6" type="Button" parent="VBoxContainer/CollisionLayers/1to8"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "6"
+
+[node name="7" type="Button" parent="VBoxContainer/CollisionLayers/1to8"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "7"
+
+[node name="8" type="Button" parent="VBoxContainer/CollisionLayers/1to8"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "8"
+
+[node name="9to16" type="GridContainer" parent="VBoxContainer/CollisionLayers"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 4
+
+[node name="9" type="Button" parent="VBoxContainer/CollisionLayers/9to16"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "9"
+
+[node name="10" type="Button" parent="VBoxContainer/CollisionLayers/9to16"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "10"
+
+[node name="11" type="Button" parent="VBoxContainer/CollisionLayers/9to16"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "11"
+
+[node name="12" type="Button" parent="VBoxContainer/CollisionLayers/9to16"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "12"
+
+[node name="13" type="Button" parent="VBoxContainer/CollisionLayers/9to16"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "13"
+
+[node name="14" type="Button" parent="VBoxContainer/CollisionLayers/9to16"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "14"
+
+[node name="15" type="Button" parent="VBoxContainer/CollisionLayers/9to16"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "15"
+
+[node name="16" type="Button" parent="VBoxContainer/CollisionLayers/9to16"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "16"
+
+[node name="ShowMoreButton" type="Button" parent="VBoxContainer/CollisionLayers"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 8
+toggle_mode = true
+text = "v"
+
+[node name="17to24" type="GridContainer" parent="VBoxContainer/CollisionLayers"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 4
+
+[node name="17" type="Button" parent="VBoxContainer/CollisionLayers/17to24"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "17"
+
+[node name="18" type="Button" parent="VBoxContainer/CollisionLayers/17to24"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "18"
+
+[node name="19" type="Button" parent="VBoxContainer/CollisionLayers/17to24"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "19"
+
+[node name="20" type="Button" parent="VBoxContainer/CollisionLayers/17to24"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "20"
+
+[node name="21" type="Button" parent="VBoxContainer/CollisionLayers/17to24"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "21"
+
+[node name="22" type="Button" parent="VBoxContainer/CollisionLayers/17to24"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "22"
+
+[node name="23" type="Button" parent="VBoxContainer/CollisionLayers/17to24"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "23"
+
+[node name="24" type="Button" parent="VBoxContainer/CollisionLayers/17to24"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "24"
+
+[node name="24to32" type="GridContainer" parent="VBoxContainer/CollisionLayers"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 4
+
+[node name="25" type="Button" parent="VBoxContainer/CollisionLayers/24to32"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "25"
+
+[node name="26" type="Button" parent="VBoxContainer/CollisionLayers/24to32"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "26"
+
+[node name="27" type="Button" parent="VBoxContainer/CollisionLayers/24to32"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "27"
+
+[node name="28" type="Button" parent="VBoxContainer/CollisionLayers/24to32"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "28"
+
+[node name="29" type="Button" parent="VBoxContainer/CollisionLayers/24to32"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "29"
+
+[node name="30" type="Button" parent="VBoxContainer/CollisionLayers/24to32"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "30"
+
+[node name="31" type="Button" parent="VBoxContainer/CollisionLayers/24to32"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "31"
+
+[node name="32" type="Button" parent="VBoxContainer/CollisionLayers/24to32"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "32"

@@ -1,0 +1,432 @@
+[gd_scene load_steps=24 format=4 uid="uid://bymh4cwtdju6"]
+
+[ext_resource type="TileSet" uid="uid://c6n5enxawnyf5" path="res://resources/platformer_tileset.tres" id="1_jyg5n"]
+[ext_resource type="PackedScene" uid="uid://da2pveknyv8kk" path="res://examples/collision_layers_and_masks/components/object_collision_layers.tscn" id="1_ldfxh"]
+[ext_resource type="Script" uid="uid://cqulaj0diivqm" path="res://examples/collision_layers_and_masks/components/tile_map.gd" id="2_ue4oa"]
+[ext_resource type="PackedScene" uid="uid://bb1ri6iy7a5qo" path="res://examples/collision_layers_and_masks/components/character_body_2d.tscn" id="3_jyg5n"]
+[ext_resource type="Texture2D" uid="uid://chea2dyvo1bko" path="res://assets/kenney_new-platformer-pack-1.0/Vector/Tiles/block_red.svg" id="4_xibx3"]
+[ext_resource type="Script" uid="uid://3kj0jlh26b87" path="res://examples/collision_layers_and_masks/components/area_2d.gd" id="5_ldfxh"]
+[ext_resource type="Texture2D" uid="uid://k8sa12l0yqeo" path="res://assets/kenney_new-platformer-pack-1.0/Vector/Enemies/saw_a.svg" id="5_wflyr"]
+[ext_resource type="PackedScene" uid="uid://bhfs3jpkagxai" path="res://examples/collision_layers_and_masks/components/collision_layers_editor.tscn" id="6_l1cmt"]
+[ext_resource type="Script" uid="uid://bjusrfavtbjgt" path="res://examples/collision_layers_and_masks/components/toggle_visibility.gd" id="8_w1cuj"]
+[ext_resource type="Script" uid="uid://cyt5rivxp50sd" path="res://examples/collision_layers_and_masks/components/controls.gd" id="10_wflyr"]
+[ext_resource type="Texture2D" uid="uid://er2jrv6suhge" path="res://examples/collision_layers_and_masks/components/GuiVisibilityVisible.svg" id="10_xeq6i"]
+[ext_resource type="Texture2D" uid="uid://bnp2ndtys2a1i" path="res://assets/kenney_game-icons/PNG/White/2x/up.png" id="12_cfhwl"]
+[ext_resource type="Texture2D" uid="uid://dsu3hqkgb845h" path="res://assets/kenney_game-icons/PNG/White/2x/down.png" id="13_3a02y"]
+[ext_resource type="BitMap" uid="uid://cwphglkgpnef7" path="res://assets/kenney_game-icons/PNG/White/2x/up_bitmap.png" id="14_7hp0g"]
+[ext_resource type="Texture2D" uid="uid://c03dy4n3f7eds" path="res://assets/kenney_game-icons/PNG/White/2x/pause.png" id="16_j3yrw"]
+[ext_resource type="BitMap" uid="uid://be7ffr0on271f" path="res://assets/kenney_game-icons/PNG/White/2x/down_bitmap.png" id="17_i5bvh"]
+[ext_resource type="Texture2D" uid="uid://cdtsnwd4magse" path="res://assets/kenney_game-icons/PNG/White/2x/return.png" id="17_qjagd"]
+
+[sub_resource type="Gradient" id="Gradient_l1cmt"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ue4oa"]
+gradient = SubResource("Gradient_l1cmt")
+
+[sub_resource type="Animation" id="Animation_cfhwl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(336, -320)]
+}
+
+[sub_resource type="Animation" id="Animation_wflyr"]
+resource_name = "new_animation"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(336, -320), Vector2(570, -320)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3a02y"]
+_data = {
+&"RESET": SubResource("Animation_cfhwl"),
+&"new_animation": SubResource("Animation_wflyr")
+}
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wflyr"]
+friction = 0.23
+bounce = 0.6
+
+[node name="CollisionLayersAndMasks" type="Node2D"]
+process_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+anchor_mode = 0
+limit_top = -600
+limit_bottom = 650
+editor_draw_limits = true
+
+[node name="ToggleVisibility" type="TextureButton" parent="." node_paths=PackedStringArray("canvas_items")]
+offset_left = 450.0
+offset_top = -12.0
+offset_right = 530.0
+offset_bottom = 68.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("10_xeq6i")
+stretch_mode = 5
+script = ExtResource("8_w1cuj")
+canvas_items = [NodePath("../Node2D/StaticBodyCollisionExample/CharacterBody2D"), NodePath("../Node2D/StaticBodyCollisionExample/StaticBody2D"), NodePath("../VBoxContainer/ObjectCollisionLayers"), NodePath("../VBoxContainer/ObjectCollisionLayers2"), NodePath("../VBoxContainer2/ObjectCollisionLayers3"), NodePath("../VBoxContainer2/ObjectCollisionLayers4")]
+
+[node name="ToggleVisibility2" type="TextureButton" parent="." node_paths=PackedStringArray("canvas_items")]
+offset_left = 447.0
+offset_top = 246.0
+offset_right = 527.0
+offset_bottom = 326.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("10_xeq6i")
+stretch_mode = 5
+script = ExtResource("8_w1cuj")
+canvas_items = [NodePath("../Node2D/AreaDetectorExample/CharacterBody2D2"), NodePath("../Node2D/AreaDetectorExample/Area2D"), NodePath("../VBoxContainer/ObjectCollisionLayers5"), NodePath("../VBoxContainer/ObjectCollisionLayers6"), NodePath("../VBoxContainer2/ObjectCollisionLayers7"), NodePath("../VBoxContainer2/ObjectCollisionLayers8")]
+
+[node name="ToggleVisibility3" type="TextureButton" parent="." node_paths=PackedStringArray("canvas_items")]
+offset_left = 447.0
+offset_top = -260.0
+offset_right = 527.0
+offset_bottom = -180.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("10_xeq6i")
+stretch_mode = 5
+script = ExtResource("8_w1cuj")
+canvas_items = [NodePath("../Node2D/RigidBodyCollisionExample/RigidBody2D"), NodePath("../Node2D/RigidBodyCollisionExample/CharacterBody2D"), NodePath("../VBoxContainer/ObjectCollisionLayers3"), NodePath("../VBoxContainer/ObjectCollisionLayers4"), NodePath("../VBoxContainer2/ObjectCollisionLayers9"), NodePath("../VBoxContainer2/ObjectCollisionLayers10")]
+
+[node name="ToggleVisibility4" type="TextureButton" parent="." node_paths=PackedStringArray("canvas_items")]
+offset_left = 447.0
+offset_top = -520.0
+offset_right = 527.0
+offset_bottom = -440.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("10_xeq6i")
+stretch_mode = 5
+script = ExtResource("8_w1cuj")
+canvas_items = [NodePath("../Node2D/TwoAreasExample/Area2D"), NodePath("../Node2D/TwoAreasExample/Area2D2"), NodePath("../VBoxContainer/ObjectCollisionLayers7"), NodePath("../VBoxContainer/ObjectCollisionLayers8"), NodePath("../VBoxContainer2/ObjectCollisionLayers11"), NodePath("../VBoxContainer2/ObjectCollisionLayers12")]
+
+[node name="Node2D" type="Node2D" parent="."]
+process_mode = 1
+position = Vector2(52, -70)
+
+[node name="TileMap" type="TileMapLayer" parent="Node2D"]
+z_index = -1
+tile_map_data = PackedByteArray("AAADAAMAAAAGAA4AAAAKAAMAAAAGAA4AAAAKAAAAAAAHABAAAAAJAAAAAAAHAAYAAAAIAAAAAAAHAAYAAAAHAAAAAAAHAAYAAAAGAAAAAAAHAAYAAAAFAAAAAAAHAAYAAAAEAAAAAAAHAAYAAAADAAEAAAAGAA4AAAADAAIAAAAGAA4AAAADAAQAAAAHABEAAAADAAUAAAAGAA4AAAADAAYAAAAGAA4AAAAKAAYAAAAGAA4AAAAKAAEAAAAGAA4AAAAKAAIAAAAGAA4AAAAKAAQAAAAHABAAAAAKAAUAAAAGAA4AAAADAAcAAAAGAA4AAAADAAgAAAAIAAIAAAAEAAgAAAAHAAYAAAAFAAgAAAAHAAYAAAAGAAgAAAAHAAYAAAAHAAgAAAAHAAYAAAAIAAgAAAAHAAYAAAAJAAgAAAAHAAYAAAAKAAgAAAAIAAEAAAAKAAcAAAAGAA4AAAAEAAQAAAAHAAYAAAAFAAQAAAAHAAYAAAAGAAQAAAAHAAYAAAAHAAQAAAAHAAYAAAAIAAQAAAAHAAYAAAAJAAQAAAAHAAYAAAADAAAAAAAHABEAAAADAP//AAAGAA4AAAADAP7/AAAGAA4AAAADAP3/AAAGAA4AAAADAPz/AAAHABEAAAAEAPz/AAAHAAYAAAAFAPz/AAAHAAYAAAAGAPz/AAAHAAYAAAAHAPz/AAAHAAYAAAAIAPz/AAAHAAYAAAAJAPz/AAAHAAYAAAAKAPz/AAAHABAAAAAKAP3/AAAGAA4AAAAKAP7/AAAGAA4AAAAKAP//AAAGAA4AAAAKAPv/AAAGAA4AAAAKAPr/AAAGAA4AAAAKAPn/AAAGAA4AAAAKAPj/AAAHAA0AAAAJAPj/AAAHAAYAAAAIAPj/AAAHAAYAAAAHAPj/AAAHAAYAAAAGAPj/AAAHAAYAAAAFAPj/AAAHAAYAAAAEAPj/AAAHAAYAAAADAPj/AAAHAA4AAAADAPn/AAAGAA4AAAADAPr/AAAGAA4AAAADAPv/AAAGAA4AAAA=")
+tile_set = ExtResource("1_jyg5n")
+script = ExtResource("2_ue4oa")
+
+[node name="TwoAreasExample" type="Node2D" parent="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="Node2D/TwoAreasExample"]
+position = Vector2(336, -320)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("5_ldfxh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/TwoAreasExample/Area2D"]
+modulate = Color(1, 1, 1, 0.784314)
+scale = Vector2(1.42188, 1.375)
+texture = SubResource("GradientTexture2D_ue4oa")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/TwoAreasExample/Area2D"]
+scale = Vector2(1.42188, 1.375)
+polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+
+[node name="Area2D2" type="Area2D" parent="Node2D/TwoAreasExample"]
+position = Vector2(568, -362)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("5_ldfxh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/TwoAreasExample/Area2D2"]
+modulate = Color(1, 1, 1, 0.784314)
+scale = Vector2(1.42188, 1.375)
+texture = SubResource("GradientTexture2D_ue4oa")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/TwoAreasExample/Area2D2"]
+scale = Vector2(1.42188, 1.375)
+polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/TwoAreasExample"]
+libraries = {
+&"": SubResource("AnimationLibrary_3a02y")
+}
+autoplay = "new_animation"
+
+[node name="RigidBodyCollisionExample" type="Node2D" parent="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Node2D/RigidBodyCollisionExample"]
+position = Vector2(534, -137)
+collision_layer = 8
+collision_mask = 128
+physics_material_override = SubResource("PhysicsMaterial_wflyr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/RigidBodyCollisionExample/RigidBody2D"]
+texture = ExtResource("5_wflyr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/RigidBodyCollisionExample/RigidBody2D"]
+polygon = PackedVector2Array(5.5, -32, -5.5, -32, -6.5, -31.5, -6.5, -30.5, -7.5, -30.5, -7.5, -29.5, -8.5, -29.5, -8.5, -28.5, -9.3, -28.5, -10.3, -26.5, -21.5, -26.5, -21.5, -25.5, -22.5, -25.5, -22.5, -24.5, -23.5, -24.5, -23.5, -23.5, -24.3, -23.5, -25.3, -21.5, -26.5, -21.5, -26.5, -10.5, -27.5, -10.5, -27.5, -9.5, -28.5, -9.5, -28.5, -8.5, -29.5, -8.5, -29.5, -7.5, -30.5, -7.5, -30.5, -6.3, -32, -5.6, -32, 5.5, -31.5, 6.5, -30.5, 6.5, -30.5, 7.5, -29.5, 7.5, -29.5, 8.5, -28.3, 8.5, -27.3, 10.5, -26.5, 10.5, -26.5, 20.5, -25.5, 20.5, -25.5, 22.5, -24.5, 22.5, -24.5, 23.5, -23.3, 23.5, -22.3, 25.5, -20.5, 25.5, -20.5, 26.5, -10.5, 26.5, -10.5, 27.5, -9.5, 27.5, -9.5, 28.5, -8.5, 28.5, -8.5, 29.5, -7.5, 29.5, -7.5, 30.5, -6.3, 30.5, -5.6, 32, 5.5, 32, 6.5, 31.5, 6.5, 30.5, 7.5, 30.5, 7.5, 29.5, 8.5, 29.5, 8.5, 28.2, 10.5, 27.3, 10.5, 26.5, 20.5, 26.5, 20.5, 25.5, 22.5, 25.5, 22.5, 24.5, 23.3, 24.5, 24.3, 22.5, 25.5, 22.5, 25.5, 20.5, 26.5, 20.5, 26.5, 10.5, 27.5, 10.5, 27.5, 9.5, 28.5, 9.5, 28.5, 8.5, 29.5, 8.5, 29.5, 7.5, 30.3, 7.5, 31.3, 5.5, 32, 5.5, 32, -5.5, 31.5, -6.5, 30.5, -6.5, 30.5, -7.5, 29.5, -7.5, 29.5, -8.5, 28.3, -8.5, 27.3, -10.5, 26.5, -10.5, 26.5, -20.5, 25.5, -20.5, 25.5, -22.5, 24.5, -22.5, 24.5, -23.5, 23.3, -23.5, 22.3, -25.5, 20.5, -25.5, 20.5, -26.5, 10.5, -26.5, 10.5, -27.5, 9.5, -27.5, 9.5, -28.5, 8.5, -28.5, 8.5, -29.5, 7.5, -29.5, 7.5, -30.3, 5.5, -31.3)
+
+[node name="CharacterBody2D" parent="Node2D/RigidBodyCollisionExample" instance=ExtResource("3_jyg5n")]
+position = Vector2(312.5, -3)
+collision_layer = 1
+collision_mask = 128
+
+[node name="StaticBodyCollisionExample" type="Node2D" parent="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/StaticBodyCollisionExample"]
+unique_name_in_owner = true
+position = Vector2(528.75, 223.75)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/StaticBodyCollisionExample/StaticBody2D"]
+texture = ExtResource("4_xibx3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/StaticBodyCollisionExample/StaticBody2D"]
+polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+
+[node name="CharacterBody2D" parent="Node2D/StaticBodyCollisionExample" instance=ExtResource("3_jyg5n")]
+unique_name_in_owner = true
+position = Vector2(312.5, 256.25)
+collision_layer = 1
+collision_mask = 132
+
+[node name="AreaDetectorExample" type="Node2D" parent="Node2D"]
+
+[node name="CharacterBody2D2" parent="Node2D/AreaDetectorExample" instance=ExtResource("3_jyg5n")]
+unique_name_in_owner = true
+position = Vector2(311, 510)
+collision_layer = 1
+collision_mask = 128
+
+[node name="Area2D" type="Area2D" parent="Node2D/AreaDetectorExample"]
+unique_name_in_owner = true
+position = Vector2(570, 454)
+collision_layer = 0
+script = ExtResource("5_ldfxh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/AreaDetectorExample/Area2D"]
+modulate = Color(1, 1, 1, 0.784314)
+scale = Vector2(1.42188, 1.375)
+texture = SubResource("GradientTexture2D_ue4oa")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/AreaDetectorExample/Area2D"]
+scale = Vector2(1.42188, 1.375)
+polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = -1
+offset_left = 19.0
+offset_top = -726.0
+offset_right = 223.0
+offset_bottom = 714.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ObjectCollisionLayers7" parent="VBoxContainer" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/TwoAreasExample/Area2D")
+
+[node name="ObjectCollisionLayers8" parent="VBoxContainer" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/TwoAreasExample/Area2D")
+collision_type = 1
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ObjectCollisionLayers3" parent="VBoxContainer" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/RigidBodyCollisionExample/CharacterBody2D")
+
+[node name="ObjectCollisionLayers4" parent="VBoxContainer" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/RigidBodyCollisionExample/CharacterBody2D")
+collision_type = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ObjectCollisionLayers" parent="VBoxContainer" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/StaticBodyCollisionExample/CharacterBody2D")
+
+[node name="ObjectCollisionLayers2" parent="VBoxContainer" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/StaticBodyCollisionExample/CharacterBody2D")
+collision_type = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ObjectCollisionLayers5" parent="VBoxContainer" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+collision_object = NodePath("../../Node2D/AreaDetectorExample/CharacterBody2D2")
+
+[node name="ObjectCollisionLayers6" parent="VBoxContainer" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+collision_object = NodePath("../../Node2D/AreaDetectorExample/CharacterBody2D2")
+collision_type = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+z_index = -1
+offset_left = 786.0
+offset_top = -840.0
+offset_right = 948.0
+offset_bottom = 816.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ObjectCollisionLayers11" parent="VBoxContainer2" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/TwoAreasExample/Area2D2")
+
+[node name="ObjectCollisionLayers12" parent="VBoxContainer2" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/TwoAreasExample/Area2D2")
+collision_type = 1
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="ObjectCollisionLayers9" parent="VBoxContainer2" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/RigidBodyCollisionExample/RigidBody2D")
+
+[node name="ObjectCollisionLayers10" parent="VBoxContainer2" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/RigidBodyCollisionExample/RigidBody2D")
+collision_type = 1
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="ObjectCollisionLayers3" parent="VBoxContainer2" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/StaticBodyCollisionExample/StaticBody2D")
+
+[node name="ObjectCollisionLayers4" parent="VBoxContainer2" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/StaticBodyCollisionExample/StaticBody2D")
+collision_type = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="ObjectCollisionLayers7" parent="VBoxContainer2" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/AreaDetectorExample/Area2D")
+
+[node name="ObjectCollisionLayers8" parent="VBoxContainer2" node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+layout_mode = 2
+size_flags_horizontal = 4
+collision_object = NodePath("../../Node2D/AreaDetectorExample/Area2D")
+collision_type = 1
+
+[node name="TilemapLayers" type="HBoxContainer" parent="."]
+offset_left = 326.0
+offset_top = 522.0
+offset_right = 650.0
+offset_bottom = 615.0
+theme_override_constants/separation = 30
+
+[node name="TileMapCollisionLayersEditor" parent="TilemapLayers" instance=ExtResource("6_l1cmt")]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+collision_flags = 0
+title = "TileMap's Layer"
+
+[node name="TileMapCollisionMasksEditor" parent="TilemapLayers" instance=ExtResource("6_l1cmt")]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+collision_flags = 0
+title = "TitleMap's Mask"
+
+[node name="Controls" type="CanvasLayer" parent="."]
+script = ExtResource("10_wflyr")
+
+[node name="GoUp" type="TextureButton" parent="Controls"]
+unique_name_in_owner = true
+offset_left = 995.0
+offset_top = 19.0
+offset_right = 1095.0
+offset_bottom = 119.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("12_cfhwl")
+texture_click_mask = ExtResource("14_7hp0g")
+
+[node name="GoDown" type="TextureButton" parent="Controls"]
+unique_name_in_owner = true
+offset_left = 995.0
+offset_top = 87.0
+offset_right = 1095.0
+offset_bottom = 187.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("13_3a02y")
+texture_click_mask = ExtResource("17_i5bvh")
+
+[node name="Pause" type="TextureButton" parent="Controls"]
+unique_name_in_owner = true
+offset_left = 996.0
+offset_top = 188.0
+offset_right = 1096.0
+offset_bottom = 288.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource("16_j3yrw")
+
+[node name="Reset" type="TextureButton" parent="Controls"]
+unique_name_in_owner = true
+offset_left = 995.0
+offset_top = 301.0
+offset_right = 1095.0
+offset_bottom = 401.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("17_qjagd")

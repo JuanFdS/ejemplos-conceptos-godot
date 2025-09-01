@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bb1ri6iy7a5qo"]
+
+[ext_resource type="Script" uid="uid://bpt6wd7hl2kl7" path="res://examples/collision_layers_and_masks/components/character_body_2d.gd" id="1_3jd1r"]
+[ext_resource type="Texture2D" uid="uid://ixcyn2ft0fnu" path="res://assets/kenney_new-platformer-pack-1.0/Spritesheets/spritesheet-characters-default.png" id="2_yews5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1cmt"]
+atlas = ExtResource("2_yews5")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ue4oa"]
+atlas = ExtResource("2_yews5")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w1cuj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1cmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ue4oa")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyg5n"]
+size = Vector2(53, 82)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_3jd1r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -62)
+sprite_frames = SubResource("SpriteFrames_w1cuj")
+animation = &"running"
+autoplay = "running"
+frame_progress = 0.706207
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -46)
+shape = SubResource("RectangleShape2D_jyg5n")

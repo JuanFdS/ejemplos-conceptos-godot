@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=4 uid="uid://bymh4cwtdju6"]
+
+[ext_resource type="TileSet" uid="uid://c6n5enxawnyf5" path="res://resources/platformer_tileset.tres" id="1_jyg5n"]
+[ext_resource type="PackedScene" uid="uid://da2pveknyv8kk" path="res://examples/collision_layers_and_masks/object_collision_layers.tscn" id="1_ldfxh"]
+[ext_resource type="PackedScene" uid="uid://bb1ri6iy7a5qo" path="res://examples/collision_layers_and_masks/character_body_2d.tscn" id="3_jyg5n"]
+[ext_resource type="Texture2D" uid="uid://chea2dyvo1bko" path="res://assets/kenney_new-platformer-pack-1.0/Vector/Tiles/block_red.svg" id="4_xibx3"]
+[ext_resource type="Script" uid="uid://3kj0jlh26b87" path="res://examples/collision_layers_and_masks/area_2d.gd" id="5_ldfxh"]
+
+[sub_resource type="Gradient" id="Gradient_l1cmt"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ue4oa"]
+gradient = SubResource("Gradient_l1cmt")
+
+[node name="CollisionLayersAndMasks" type="Node2D"]
+
+[node name="ObjectCollisionLayers" parent="." node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+offset_left = 10.0
+offset_top = 16.0
+offset_right = 334.0
+offset_bottom = 109.0
+collision_object = NodePath("../Node2D/CharacterBody2D")
+
+[node name="ObjectCollisionLayers2" parent="." node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+offset_left = 10.0
+offset_top = 127.0
+offset_right = 334.0
+offset_bottom = 220.0
+collision_object = NodePath("../Node2D/CharacterBody2D")
+collision_type = 1
+
+[node name="ObjectCollisionLayers3" parent="." node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+offset_left = 807.0
+offset_top = 16.0
+offset_right = 1131.0
+offset_bottom = 109.0
+collision_object = NodePath("../Node2D/StaticBody2D")
+
+[node name="ObjectCollisionLayers4" parent="." node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+offset_left = 807.0
+offset_top = 126.0
+offset_right = 1131.0
+offset_bottom = 219.0
+collision_object = NodePath("../Node2D/StaticBody2D")
+collision_type = 1
+
+[node name="ObjectCollisionLayers5" parent="." node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+offset_left = 11.0
+offset_top = 283.0
+offset_right = 335.0
+offset_bottom = 376.0
+collision_object = NodePath("../Node2D/CharacterBody2D2")
+
+[node name="ObjectCollisionLayers6" parent="." node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+offset_left = 11.0
+offset_top = 393.0
+offset_right = 335.0
+offset_bottom = 486.0
+collision_object = NodePath("../Node2D/CharacterBody2D2")
+collision_type = 1
+
+[node name="ObjectCollisionLayers7" parent="." node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+offset_left = 808.0
+offset_top = 285.0
+offset_right = 1132.0
+offset_bottom = 378.0
+collision_object = NodePath("../Node2D/Area2D")
+
+[node name="ObjectCollisionLayers8" parent="." node_paths=PackedStringArray("collision_object") instance=ExtResource("1_ldfxh")]
+offset_left = 808.0
+offset_top = 395.0
+offset_right = 1132.0
+offset_bottom = 488.0
+collision_object = NodePath("../Node2D/Area2D")
+collision_type = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(200, 35)
+scale = Vector2(0.8, 0.8)
+
+[node name="TileMap" type="TileMapLayer" parent="Node2D"]
+z_index = -1
+tile_map_data = PackedByteArray("AAADAAMAAAAGAA4AAAAKAAMAAAAGAA4AAAAPAAAAAAAIAAQAAAAKAAAAAAAHAA0AAAAJAAAAAAAHAAYAAAAIAAAAAAAHAAYAAAAHAAAAAAAHAAYAAAAGAAAAAAAHAAYAAAAFAAAAAAAHAAYAAAAEAAAAAAAHAAYAAAADAAAAAAAHAA4AAAADAAEAAAAGAA4AAAADAAIAAAAGAA4AAAADAAQAAAAHABEAAAADAAUAAAAGAA4AAAADAAYAAAAGAA4AAAAKAAYAAAAGAA4AAAAKAAEAAAAGAA4AAAAKAAIAAAAGAA4AAAAKAAQAAAAHABAAAAAKAAUAAAAGAA4AAAADAAcAAAAGAA4AAAADAAgAAAAIAAIAAAAEAAgAAAAHAAYAAAAFAAgAAAAHAAYAAAAGAAgAAAAHAAYAAAAHAAgAAAAHAAYAAAAIAAgAAAAHAAYAAAAJAAgAAAAHAAYAAAAKAAgAAAAIAAEAAAAKAAcAAAAGAA4AAAAEAAQAAAAHAAYAAAAFAAQAAAAHAAYAAAAGAAQAAAAHAAYAAAAHAAQAAAAHAAYAAAAIAAQAAAAHAAYAAAAJAAQAAAAHAAYAAAA=")
+tile_set = ExtResource("1_jyg5n")
+
+[node name="CharacterBody2D" parent="Node2D" instance=ExtResource("3_jyg5n")]
+position = Vector2(312.5, 197.5)
+collision_layer = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+position = Vector2(486.25, 215)
+scale = Vector2(1, 1)
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/StaticBody2D"]
+texture = ExtResource("4_xibx3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/StaticBody2D"]
+polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+
+[node name="CharacterBody2D2" parent="Node2D" instance=ExtResource("3_jyg5n")]
+position = Vector2(311, 451.25)
+collision_layer = 1
+
+[node name="Area2D" type="Area2D" parent="Node2D"]
+position = Vector2(570, 454)
+collision_layer = 0
+script = ExtResource("5_ldfxh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Area2D"]
+modulate = Color(1, 1, 1, 0.784314)
+scale = Vector2(1.42188, 1.375)
+texture = SubResource("GradientTexture2D_ue4oa")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Area2D"]
+scale = Vector2(1.42188, 1.375)
+polygon = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

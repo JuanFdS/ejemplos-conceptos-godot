@@ -1,0 +1,280 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcpnybp8xluee"]
+
+[ext_resource type="Script" uid="uid://dpss8ru7q3wby" path="res://examples/delta/components/delta.gd" id="1_gh32t"]
+[ext_resource type="Script" uid="uid://eau1k4wdmb34" path="res://examples/delta/components/uses_delta.gd" id="2_6vcrk"]
+[ext_resource type="Texture2D" uid="uid://bepgsw1owmwnw" path="res://icon.svg" id="2_f37s7"]
+[ext_resource type="Script" uid="uid://bjnfwb26dsen8" path="res://examples/delta/components/path_follow_2d.gd" id="3_gmxsu"]
+[ext_resource type="Script" uid="uid://cgu8s0lnks8dq" path="res://examples/delta/components/does_not_use_delta.gd" id="4_pki7j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmxsu"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.0901961, 0.0901961, 0.0901961, 0.741176)
+
+[sub_resource type="Curve2D" id="Curve2D_f37s7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 206, 304, 0, 0, 0, 0, 600, 304, 0, 0, 0, 0, 206, 304)
+}
+point_count = 3
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_pki7j"]
+number_color = Color(0.798613, 0.297874, 0.0159704, 1)
+symbol_color = Color(0.666569, 0.666569, 0.666569, 1)
+function_color = Color(0.350471, 0.548974, 0.992788, 1)
+member_variable_color = Color(0, 0.588235, 0, 1)
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_gmxsu"]
+number_color = Color(0.798613, 0.297874, 0.0159704, 1)
+symbol_color = Color(0.666569, 0.666569, 0.666569, 1)
+function_color = Color(0.350471, 0.548974, 0.992788, 1)
+member_variable_color = Color(0, 0.588235, 0, 1)
+
+[node name="Delta" type="Node2D"]
+script = ExtResource("1_gh32t")
+max_configurable_fps = 300
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -307.0
+offset_right = 250.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="MaxFPS" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/PanelContainer/MaxFPS"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FPS Máximos"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/PanelContainer/MaxFPS"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MaxFPSLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer/PanelContainer/MaxFPS/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "60"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer/PanelContainer/MaxFPS/VBoxContainer"]
+layout_mode = 2
+
+[node name="MinConfigurableFPS" type="Label" parent="CanvasLayer/Control/VBoxContainer/PanelContainer/MaxFPS/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+vertical_alignment = 1
+
+[node name="ConfigurableMaxFPS" type="HSlider" parent="CanvasLayer/Control/VBoxContainer/PanelContainer/MaxFPS/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 300.0
+value = 1.0
+
+[node name="MaxConfigurableFPS" type="Label" parent="CanvasLayer/Control/VBoxContainer/PanelContainer/MaxFPS/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "500"
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="RealFPS" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/PanelContainer2/RealFPS"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FPS reales"
+
+[node name="LabelRealFPS" type="Label" parent="CanvasLayer/Control/VBoxContainer/PanelContainer2/RealFPS"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "60"
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="Delta" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer/PanelContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/PanelContainer3/Delta"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Delta
+(tiempo desde último frame)"
+
+[node name="DeltaLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer/PanelContainer3/Delta"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0.015s"
+horizontal_alignment = 2
+
+[node name="Explanation" type="RichTextLabel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 82.0
+offset_top = -144.0
+offset_right = -42.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_gmxsu")
+bbcode_enabled = true
+text = "El parámetro [i]delta[/i] representa el tiempo que pasó entre el último frame y el actual.
+
+Las funciones [i]_process[/i] y [i]_physics_process[/i] la reciben por parámetro.
+Usar el valor delta nos sirve para que la lógica de nuestro juego y el tiempo en el que suceden los diferentes eventos [b]no[/b] dependa de a cuantos frames corra el juego.
+
+Si el juego corre a menos frames, se va a ver \"cortado\" porque algunos frames no se van a dibujar, pero las acciones van a tardar el mismo tiempo en ocurrir."
+fit_content = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="UsesDelta" type="Node2D" parent="Node2D"]
+position = Vector2(-112, 139)
+script = ExtResource("2_6vcrk")
+
+[node name="Path2D" type="Path2D" parent="Node2D/UsesDelta"]
+curve = SubResource("Curve2D_f37s7")
+
+[node name="Line2D" type="Line2D" parent="Node2D/UsesDelta/Path2D"]
+points = PackedVector2Array(206, 304, 600, 304)
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/UsesDelta/Path2D"]
+position = Vector2(206, 304)
+rotates = false
+cubic_interp = false
+loop = false
+script = ExtResource("3_gmxsu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/UsesDelta/Path2D/PathFollow2D"]
+position = Vector2(-0.0256805, -3.99994)
+rotation = -0.0064184
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_f37s7")
+
+[node name="CodeEdit" type="CodeEdit" parent="Node2D/UsesDelta"]
+offset_left = 645.0
+offset_top = 260.0
+offset_right = 1019.0
+offset_bottom = 349.0
+theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
+text = "func _process(delta: float) -> void:
+	path_follow_2d.progress_ratio += 0.5 * delta
+"
+editable = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+syntax_highlighter = SubResource("CodeHighlighter_pki7j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/UsesDelta"]
+offset_left = 1037.0
+offset_top = 276.0
+offset_right = 1225.0
+offset_bottom = 326.0
+
+[node name="Label" type="Label" parent="Node2D/UsesDelta/VBoxContainer"]
+layout_mode = 2
+text = "Tiempo de última vuelta"
+
+[node name="UsingDeltaLastLapTime" type="Label" parent="Node2D/UsesDelta/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10s"
+horizontal_alignment = 1
+
+[node name="DoesNotUseDelta" type="Node2D" parent="Node2D"]
+position = Vector2(-112, 53)
+script = ExtResource("4_pki7j")
+
+[node name="Path2D" type="Path2D" parent="Node2D/DoesNotUseDelta"]
+position = Vector2(0, 208)
+curve = SubResource("Curve2D_f37s7")
+
+[node name="Line2D" type="Line2D" parent="Node2D/DoesNotUseDelta/Path2D"]
+points = PackedVector2Array(206, 304, 600, 304)
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/DoesNotUseDelta/Path2D"]
+position = Vector2(206, 304)
+rotates = false
+cubic_interp = false
+loop = false
+script = ExtResource("3_gmxsu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/DoesNotUseDelta/Path2D/PathFollow2D"]
+rotation = -0.0064184
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_f37s7")
+
+[node name="CodeEdit" type="CodeEdit" parent="Node2D/DoesNotUseDelta"]
+offset_left = 645.0
+offset_top = 472.0
+offset_right = 1019.0
+offset_bottom = 561.0
+theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
+text = "func _process(delta: float) -> void:
+	path_follow_2d.progress_ratio += 0.008"
+editable = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+syntax_highlighter = SubResource("CodeHighlighter_gmxsu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/DoesNotUseDelta"]
+offset_left = 1037.0
+offset_top = 490.0
+offset_right = 1225.0
+offset_bottom = 540.0
+
+[node name="Label" type="Label" parent="Node2D/DoesNotUseDelta/VBoxContainer"]
+layout_mode = 2
+text = "Tiempo de última vuelta"
+
+[node name="WithoutDeltaLastLapTime" type="Label" parent="Node2D/DoesNotUseDelta/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10s"
+horizontal_alignment = 1

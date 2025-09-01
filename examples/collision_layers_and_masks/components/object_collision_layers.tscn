@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://da2pveknyv8kk"]
+
+[ext_resource type="Script" uid="uid://b7hkw4kx43cl4" path="res://examples/collision_layers_and_masks/components/object_collision_layers.gd" id="1_kd4tn"]
+[ext_resource type="PackedScene" uid="uid://bhfs3jpkagxai" path="res://examples/collision_layers_and_masks/components/collision_layers_editor.tscn" id="2_20ycd"]
+
+[node name="ObjectCollisionLayers" type="PanelContainer"]
+offset_right = 324.0
+offset_bottom = 93.0
+script = ExtResource("1_kd4tn")
+
+[node name="CollisionLayersEditor" parent="." instance=ExtResource("2_20ycd")]
+z_index = 1
+layout_mode = 2
+collision_flags = 0
+title = "Title"
