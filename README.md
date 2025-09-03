@@ -24,11 +24,11 @@ Una escena con 2 nodos que se mueven, uno de ellos considera el parámetro delta
 2. Abre el proyecto en Godot Engine
 3. Ejecuta las escenas de ejemplo desde la carpeta `examples/`
 
-## 🎨 Recursos utilizados
+## Recursos utilizados
 
 - [Kenney Game Icons](https://kenney.nl/assets/game-icons)
 - [Kenney Platformer Pack](https://kenney.nl/assets/new-platformer-pack)
 
-## 🤝 Contribuciones
+## Contribuciones
 
 Este es un proyecto educativo. Si encontrás algún bug o tenés sugerencias para mejorar ejemplos (o agregar nuevos ejemplos), sentite libre de abrir un issue o mandar un pull request.
